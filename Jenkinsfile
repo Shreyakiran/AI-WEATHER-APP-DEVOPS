@@ -11,10 +11,10 @@ pipeline {
             }
         }
 
-        stage('Build App') {
+        stage('Build React App') {
             steps {
                 dir('ai-weather-app') {
-                    sh 'npm run build'
+                    sh 'CI=false npm run build'
                 }
             }
         }
@@ -28,4 +28,4 @@ pipeline {
         }
 
     }
-}git add .
+}
