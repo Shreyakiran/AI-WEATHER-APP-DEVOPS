@@ -11,19 +11,25 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                bat 'npm install --legacy-peer-deps'
+                dir('ai-weather-app') {
+                    bat 'npm install --legacy-peer-deps'
+                }
             }
         }
 
-        stage('Build App') {
+        stage('Build React App') {
             steps {
-                bat 'npm run build'
+                dir('ai-weather-app') {
+                    bat 'npm run build'
+                }
             }
         }
 
-        stage('Docker Build') {
+        stage('Build Docker Image') {
             steps {
-                bat 'docker build -t ai-weather-app .'
+                dir('ai-weather-app') {
+                    bat 'docker build -t ai-weather-app .'
+                }
             }
         }
 
