@@ -28,5 +28,8 @@ jobs:
       - name: Install Dependencies
         run: npm install --legacy-peer-deps
 
-      - name: Build Project
+      - name: Build React App
         run: CI=false npm run build
+
+      - name: Build Docker Image
+        run: docker build -t ai-weather-app .
