@@ -1,26 +1,31 @@
-name: AI Weather CI
+name: AI Weather CI/CD Pipeline
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
-  build:
+
+  build-and-test:
 
     runs-on: ubuntu-latest
 
     steps:
 
-      - name: Checkout code
+      - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: npm install --legacy-peer-deps
 
-      - name: Build project
+      - name: Build Application
         run: npm run build
+
+      - name: Test Application
+        run: npm test -- --watchAll=false
