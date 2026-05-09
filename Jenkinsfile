@@ -6,7 +6,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 dir('ai-weather-app') {
-                    bat 'npm install --legacy-peer-deps'
+                    sh 'npm install --legacy-peer-deps'
                 }
             }
         }
@@ -14,7 +14,7 @@ pipeline {
         stage('Build App') {
             steps {
                 dir('ai-weather-app') {
-                    bat 'npm run build'
+                    sh 'npm run build'
                 }
             }
         }
@@ -22,10 +22,10 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 dir('ai-weather-app') {
-                    bat 'docker build -t ai-weather-app .'
+                    sh 'docker build -t ai-weather-app .'
                 }
             }
         }
 
     }
-}
+}git add .
