@@ -11,7 +11,7 @@ pipeline {
             }
         }
 
-        stage('Build React App') {
+        stage('Build App') {
             steps {
                 dir('ai-weather-app') {
                     bat 'npm run build'
