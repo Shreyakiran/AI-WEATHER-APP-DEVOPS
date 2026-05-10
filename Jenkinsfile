@@ -27,5 +27,14 @@ pipeline {
             }
         }
 
+        stage('Run Docker Container') {
+            steps {
+                dir('ai-weather-app') {
+                    sh 'docker rm -f weather-container || true'
+                    sh 'docker run -d -p 3000:3000 --name weather-container ai-weather-app'
+                }
+            }
+        }
+
     }
 }
